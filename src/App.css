@@ -1,0 +1,1177 @@
+:root {
+  --color-bg: #181c24;
+  --color-bg-alt: #232946;
+  --color-text: #f4f4f4;
+  --color-primary: #646cff;
+  --color-secondary: #b8b8ff;
+  --color-card: #232946;
+  --color-footer: #b8b8ff;
+}
+
+body.light {
+  --color-bg: #f4f4f4;
+  --color-bg-alt: #fff;
+  --color-text: #181c24;
+  --color-primary: #646cff;
+  --color-secondary: #232946;
+  --color-card: #fff;
+  --color-footer: #232946;
+}
+
+.app-container {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+  color: var(--color-text);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 900px) {
+  .app-container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-container {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+body, html {
+  overflow-x: hidden;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0 1rem 0;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-bg-alt);
+}
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.ai-logo {
+  width: 48px;
+  height: 48px;
+  background: var(--color-bg-alt);
+  border-radius: 50%;
+  box-shadow: 0 2px 12px var(--color-primary)33;
+}
+.app-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #fff;
+  line-height: 1.08;
+  position: relative;
+  transition: font-size 0.2s;
+}
+.app-title::after {
+  content: attr(data-shadow);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  color: transparent;
+  background: linear-gradient(90deg, #646cff 0%, #60a5fa 50%, #a5b4fc 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: blur(8px) brightness(1.2);
+  opacity: 0.85;
+  animation: shadow-gradient-move 3.5s linear infinite alternate;
+  pointer-events: none;
+}
+@keyframes shadow-gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+@media (max-width: 900px) {
+  .app-title {
+    font-size: 2.2rem;
+  }
+}
+@media (max-width: 600px) {
+  .app-title {
+    font-size: 1.3rem;
+  }
+}
+.nav-bar {
+  margin-top: 1rem;
+  display: flex;
+  gap: 2rem;
+}
+.nav-bar a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+.nav-bar a:hover {
+  color: var(--color-primary);
+}
+.theme-toggle {
+  margin-left: 2rem;
+  background: none;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.theme-toggle:hover {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+.hero-section {
+  text-align: center;
+  padding: 4rem 1rem 2rem 1rem;
+}
+.hero-section h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.highlight {
+  color: var(--color-primary);
+}
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+  margin-bottom: 2rem;
+}
+.cta-btn {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--color-primary)33;
+  transition: background 0.2s, transform 0.2s;
+}
+.cta-btn:hover {
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+  transform: translateY(-2px) scale(1.04);
+}
+.features-section {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 1.5rem 0 1.2rem 0;
+  flex-wrap: wrap;
+  max-width: 600px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.feature-card {
+  background: var(--color-card);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px var(--color-primary)22;
+  padding: 0.8rem 1.2rem;
+  width: 250px;
+  max-width: 100%;
+  text-align: center;
+  margin: 0.5rem 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+.feature-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 32px var(--color-primary)44;
+}
+.feature-card h3 {
+  margin: 0.5rem 0 0.2rem 0;
+  color: #646cff;
+  font-size: 1.1rem;
+}
+.feature-card p {
+  color: #b8b8ff;
+  font-size: 0.95rem;
+}
+.about-section {
+  background: var(--color-bg);
+  border-radius: 16px;
+  margin: 2rem auto 2rem auto;
+  max-width: 700px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 16px var(--color-primary)22;
+  text-align: center;
+}
+.about-section h2 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.footer {
+  text-align: center;
+  padding: 1.5rem 0 1rem 0;
+  color: var(--color-footer);
+  font-size: 1rem;
+  border-top: 1px solid var(--color-bg-alt);
+  margin-top: auto;
+}
+
+.tech-banner {
+  width: 100%;
+  margin: 0.5rem 0 0 0;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tech-banner svg {
+  width: 100%;
+  max-width: 600px;
+  height: 40px;
+  display: block;
+}
+.tech-banner-text {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #a5b4fc;
+  text-shadow: 0 2px 8px #23294699;
+  pointer-events: none;
+  user-select: none;
+  margin-top: 8px;
+}
+@media (max-width: 700px) {
+  .tech-banner svg {
+    max-width: 98vw;
+    height: 28px;
+  }
+  .tech-banner-text {
+    font-size: 0.95rem;
+    margin-top: 4px;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 700px) {
+  .app-header {
+    padding: 1.2rem 0 0.7rem 0;
+  }
+  .logo-title {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .app-title {
+    font-size: 1.3rem;
+  }
+  .nav-bar {
+    gap: 1rem;
+    font-size: 1rem;
+  }
+  .hero-section {
+    padding: 2.2rem 0.2rem 1.2rem 0.2rem;
+  }
+  .hero-section h1 {
+    font-size: 1.6rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .cta-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+  .features-section {
+    max-width: 98vw;
+    gap: 0.7rem;
+    margin: 1rem 0 0.7rem 0;
+  }
+  .feature-card {
+    width: 100%;
+    max-width: 98vw;
+    padding: 0.7rem 0.5rem;
+    margin: 0.4rem 0;
+  }
+  .about-section {
+    padding: 1.2rem 0.7rem;
+    font-size: 0.98rem;
+  }
+}
+
+/* Responsive AINews (newsletter) */
+@media (max-width: 700px) {
+  .ain-news-list {
+    max-width: 100% !important;
+    gap: 1.2rem !important;
+  }
+  .ain-news-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 1rem !important;
+    gap: 0.7rem !important;
+  }
+  .ain-news-card img {
+    width: 100% !important;
+    height: 140px !important;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 700px) {
+  .feature-card {
+    width: 98%;
+    padding: 0.8rem 0.5rem;
+  }
+  .features-section {
+    gap: 0.7rem;
+    margin: 1rem 0 0.7rem 0;
+  }
+  .feature-card h3 {
+    font-size: 0.98rem;
+  }
+  .feature-card p {
+    font-size: 0.89rem;
+  }
+}
+
+/* 1. Transiciones suaves en botones, tarjetas y menús */
+button, .cta-btn, .feature-card, .nav-bar a, .app-header, .feature-card a, .footer a {
+  transition: all 0.22s cubic-bezier(.4,0,.2,1);
+}
+
+button:active, .cta-btn:active, .feature-card:active {
+  transform: scale(0.97);
+}
+
+.feature-card:hover, .feature-card:focus {
+  box-shadow: 0 4px 24px #646cff44;
+  transform: translateY(-4px) scale(1.035);
+  background: var(--color-bg-alt);
+  border: 1.5px solid var(--color-primary);
+  z-index: 2;
+}
+
+.nav-bar a:hover, .nav-bar a:focus {
+  color: var(--color-primary);
+  text-shadow: 0 2px 8px #646cff33;
+}
+
+.cta-btn:hover, .cta-btn:focus {
+  background: linear-gradient(90deg, #646cff 60%, #60a5fa 100%);
+  color: #fff;
+  box-shadow: 0 2px 16px #646cff33;
+}
+
+/* 2. Animaciones de entrada (fade-in, slide-up) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1) both;
+}
+
+.fade-in {
+  animation: fadeIn 0.7s cubic-bezier(.4,0,.2,1) both;
+}
+
+/* Aplica animación a secciones y tarjetas */
+.features-section, .about-section, .ain-news-list, .feature-card, .hero-section {
+  opacity: 0;
+  animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1) both;
+  animation-delay: 0.1s;
+}
+
+.feature-card {
+  animation-delay: 0.2s;
+}
+
+/* 3. Animación en el banner (líneas con movimiento sutil) */
+.tech-banner svg polyline {
+  stroke-dasharray: 12 8;
+  stroke-dashoffset: 0;
+  animation: bannerLineMove 2.5s linear infinite alternate;
+}
+
+@keyframes bannerLineMove {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 40; }
+}
+
+.tech-banner {
+  animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) both;
+}
+
+/* Glassmorphism para tarjetas y secciones clave */
+.feature-card, .ain-news-card, .about-section {
+  background: rgba(35, 41, 70, 0.72);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid #646cff33;
+  box-shadow: 0 4px 24px #646cff22;
+}
+
+body.light .feature-card, body.light .ain-news-card, body.light .about-section {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid #646cff22;
+  box-shadow: 0 4px 24px #646cff11;
+  color: #232946;
+}
+
+/* Glassmorphism para menú Features */
+.nav-bar div[ref], .nav-bar div[style*='position: absolute'] {
+  background: rgba(35, 41, 70, 0.82) !important;
+  backdrop-filter: blur(8px);
+  border: 1.5px solid #646cff33;
+  box-shadow: 0 4px 24px #646cff22;
+}
+
+/* Gradiente en header y footer */
+.app-header {
+  background: linear-gradient(90deg, #232946 60%, #646cff 100%);
+}
+.footer {
+  background: linear-gradient(90deg, #232946 60%, #60a5fa 100%);
+  color: var(--color-footer);
+  box-shadow: 0 -2px 16px #646cff22;
+}
+
+/* Gradiente en botones principales */
+.cta-btn {
+  background: linear-gradient(90deg, #646cff 60%, #60a5fa 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 16px #646cff33;
+}
+
+.cta-btn:hover, .cta-btn:focus {
+  background: linear-gradient(90deg, #60a5fa 60%, #646cff 100%);
+}
+
+/* Gradiente en el banner (ya existe, pero asegúrate de que sea visible) */
+.tech-banner {
+  background: linear-gradient(90deg, #232946 60%, #646cff 100%);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 2px 16px #646cff22;
+}
+
+/* Fuente moderna y jerarquía visual */
+body, .app-container {
+  font-family: 'Inter', 'Segoe UI', 'Geist', 'Space Grotesk', Arial, sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+h1, .hero-section h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--color-secondary);
+}
+
+.subtitle, .hero-section .subtitle {
+  font-size: 1.18rem;
+  color: var(--color-secondary);
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.about-section p, .feature-card p, .ain-news-card p, .ain-news-card div, .features-section p {
+  font-size: 1.05rem;
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+.feature-card h3, .ain-news-card h3 {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  h1, .hero-section h1 { font-size: 2rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.08rem; }
+}
+
+/* Íconos SVG: tamaño y alineación */
+.menu-icon, .btn-icon, .card-icon {
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  display: inline-block;
+  stroke: var(--color-primary);
+  fill: none;
+}
+
+/* Ripple effect para botones y tarjetas */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  background: rgba(100, 108, 255, 0.18);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: width 0.4s cubic-bezier(.4,0,.2,1), height 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
+  opacity: 0.7;
+}
+.ripple:active::after {
+  width: 180px;
+  height: 180px;
+  opacity: 0;
+  transition: 0s;
+}
+
+/* Tooltip básico */
+.has-tooltip {
+  position: relative;
+  cursor: pointer;
+}
+.has-tooltip .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background: #232946ee;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.3em 0.7em;
+  position: absolute;
+  z-index: 10;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.98em;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px #646cff22;
+  transition: opacity 0.22s, visibility 0.22s;
+  pointer-events: none;
+}
+.has-tooltip:hover .tooltip, .has-tooltip:focus .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Contraste y acentos en ambos modos */
+:root {
+  --color-accent-blue: #60a5fa;
+  --color-accent-violet: #646cff;
+  --color-accent-cyan: #38bdf8;
+}
+
+body, .app-container {
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+}
+
+a, .footer a, .about-section a {
+  color: var(--color-accent-blue);
+  transition: color 0.2s;
+}
+a:hover, .footer a:hover, .about-section a:hover {
+  color: var(--color-accent-violet);
+  text-decoration: underline;
+}
+
+.cta-btn, .feature-card .cta-btn {
+  background: linear-gradient(90deg, var(--color-accent-violet) 60%, var(--color-accent-blue) 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 16px #646cff33;
+}
+.cta-btn:hover, .cta-btn:focus {
+  background: linear-gradient(90deg, var(--color-accent-blue) 60%, var(--color-accent-violet) 100%);
+}
+
+.feature-card, .ain-news-card, .about-section {
+  border: 1.5px solid var(--color-accent-violet)22;
+}
+
+body.light .feature-card, body.light .ain-news-card, body.light .about-section {
+  border: 1.5px solid var(--color-accent-blue)22;
+  color: #232946;
+}
+
+/* Switch animado para el cambio de tema */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.3em;
+  transition: box-shadow 0.22s, background 0.22s;
+  box-shadow: 0 2px 8px #646cff22;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+.theme-toggle:focus {
+  box-shadow: 0 0 0 3px var(--color-accent-cyan)55;
+}
+.theme-toggle svg {
+  transition: transform 0.4s cubic-bezier(.4,0,.2,1), filter 0.4s;
+}
+.theme-toggle:active svg {
+  transform: scale(0.92) rotate(-20deg);
+  filter: brightness(1.2) drop-shadow(0 0 6px var(--color-accent-blue));
+}
+.theme-toggle {
+  transition: background 0.4s, box-shadow 0.4s;
+}
+
+/* Menú sticky y semi-transparente */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(90deg, #232946cc 60%, #646cffcc 100%);
+  box-shadow: 0 2px 16px #646cff22;
+  transition: background 0.4s, box-shadow 0.4s;
+}
+
+/* Dropdown animado y con sombra */
+.nav-bar div[style*='position: absolute'] {
+  animation: dropdownFadeIn 0.35s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 8px 32px #646cff33;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Subrayado gradiente animado para el ítem activo del menú */
+.nav-bar a.active, .nav-bar a[aria-current='page'] {
+  color: var(--color-accent-violet);
+  position: relative;
+}
+.nav-bar a.active::after, .nav-bar a[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #646cff 0%, #60a5fa 100%);
+  animation: underlineSlideIn 0.5s cubic-bezier(.4,0,.2,1);
+}
+@keyframes underlineSlideIn {
+  from { width: 0; opacity: 0; }
+  to   { width: 100%; opacity: 1; }
+}
+
+/* Bordes redondeados y sombra suave en tarjetas y secciones */
+.feature-card, .ain-news-card, .about-section {
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #646cff22;
+}
+.features-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.2rem;
+  margin-bottom: 2.5rem;
+  justify-content: center;
+}
+
+/* Espaciado generoso entre tarjetas y secciones */
+.feature-card, .ain-news-card {
+  margin-bottom: 1.5rem;
+}
+.about-section {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  padding: 2.2rem 1.2rem;
+}
+
+/* Efecto hover refinado en tarjetas */
+.feature-card:hover, .feature-card:focus, .ain-news-card:hover, .ain-news-card:focus {
+  box-shadow: 0 8px 32px #646cff44;
+  transform: translateY(-6px) scale(1.045);
+  z-index: 2;
+}
+
+/* Responsive: menos gap en móvil */
+@media (max-width: 700px) {
+  .features-section {
+    gap: 1.1rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .about-section {
+    padding: 1.2rem 0.5rem;
+  }
+}
+
+/* Footer moderno con gradiente y bio compacta */
+.footer {
+  background: linear-gradient(90deg, #232946 60%, #60a5fa 100%);
+  color: var(--color-footer);
+  box-shadow: 0 -2px 16px #646cff22;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 2.2rem 1.2rem 1.2rem 1.2rem;
+  border-radius: 18px 18px 0 0;
+  margin-top: 2.5rem;
+}
+.footer .footer-bio {
+  color: #b8b8ff;
+  font-size: 1.05rem;
+  text-align: center;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.footer .footer-socials {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.footer .footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #646cff 60%, #60a5fa 100%);
+  color: #fff;
+  font-size: 1.3rem;
+  transition: transform 0.22s, box-shadow 0.22s, background 0.22s;
+  box-shadow: 0 2px 8px #646cff22;
+}
+.footer .footer-socials a:hover {
+  transform: scale(1.13) rotate(-8deg);
+  box-shadow: 0 4px 16px #60a5fa55;
+  background: linear-gradient(135deg, #60a5fa 60%, #646cff 100%);
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+  position: fixed;
+  right: 2.2rem;
+  bottom: 2.2rem;
+  z-index: 200;
+  background: linear-gradient(135deg, #646cff 60%, #60a5fa 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px #646cff44;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(40px) scale(0.92);
+  transition: opacity 0.32s, transform 0.32s;
+}
+.scroll-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+.scroll-to-top:hover {
+  background: linear-gradient(135deg, #60a5fa 60%, #646cff 100%);
+  box-shadow: 0 8px 24px #60a5fa55;
+  transform: scale(1.12);
+}
+@media (max-width: 700px) {
+  .footer {
+    padding: 1.2rem 0.5rem 0.7rem 0.5rem;
+    border-radius: 12px 12px 0 0;
+  }
+  .scroll-to-top {
+    right: 1rem;
+    bottom: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Borde superior con gradiente animado en features */
+.features-gradient-border {
+  position: relative;
+  z-index: 1;
+}
+.features-gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(90deg, #646cff, #60a5fa, #a5b4fc, #646cff);
+  background-size: 200% 100%;
+  animation: borderGradientMove 4s linear infinite;
+  z-index: 2;
+}
+@keyframes borderGradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Loader animado moderno con gradiente */
+.gradient-loader {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-top: 5px solid #646cff;
+  border-right: 5px solid #60a5fa;
+  border-bottom: 5px solid #a5b4fc;
+  border-left: 5px solid #23294622;
+  animation: loaderSpin 1.1s linear infinite;
+  margin: 2.5rem auto;
+  display: block;
+  background: conic-gradient(from 0deg, #646cff, #60a5fa, #a5b4fc, #646cff 90%);
+}
+@keyframes loaderSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Animación AI-hero en la home */
+.ai-hero-anim {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.2rem 0 1.2rem 0;
+  min-height: 70px;
+  transition: opacity 0.5s;
+}
+.ai-hero-anim svg {
+  animation: floatOrb 2.8s ease-in-out infinite alternate;
+  transition: opacity 0.5s;
+}
+@keyframes floatOrb {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-18px); }
+}
+
+/* Focus visible premium */
+a:focus, button:focus, .feature-card:focus, .cta-btn:focus, .ain-news-card:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #646cff55, 0 2px 8px #60a5fa33;
+  z-index: 3;
+}
+
+/* Scroll suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animación sutil en tooltips */
+.has-tooltip .tooltip {
+  transition: opacity 0.22s, visibility 0.22s, transform 0.22s;
+  transform: translateY(8px) scale(0.98);
+}
+.has-tooltip:hover .tooltip, .has-tooltip:focus .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Cursor pointer con glow en botones principales */
+.cta-btn, .feature-card, .ripple, .scroll-to-top {
+  cursor: pointer;
+}
+.cta-btn:hover, .cta-btn:focus, .scroll-to-top:hover {
+  box-shadow: 0 0 0 4px #60a5fa33, 0 4px 24px #646cff44;
+}
+
+/* Animación de entrada scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.revealed {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Modern News List Styles */
+.ain-news-list-modern {
+  max-width: 800px;
+  margin: 2.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+.ain-news-card-modern {
+  display: flex;
+  background: #181c24;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #23294633;
+  overflow: hidden;
+  min-height: 180px;
+  transition: box-shadow 0.2s, transform 0.2s;
+  align-items: stretch;
+}
+.ain-news-card-modern:hover {
+  box-shadow: 0 8px 32px #646cff55;
+  transform: translateY(-2px) scale(1.01);
+}
+.ain-news-img-modern {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  background: #232946;
+  flex-shrink: 0;
+  border-radius: 0 0 0 18px;
+  display: block;
+}
+.ain-news-content-modern {
+  flex: 1;
+  padding: 1.3rem 1.5rem 1.3rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ain-news-title-modern {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
+}
+.ain-news-summary-modern {
+  color: #b8b8ff;
+  font-size: 1.05rem;
+  margin-bottom: 1.1rem;
+}
+.ain-news-meta-modern {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  color: #888;
+  font-size: 0.98rem;
+  flex-wrap: wrap;
+}
+.ain-news-author-modern {
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.ain-news-date-modern {
+  color: #b8b8ff;
+  font-size: 0.97rem;
+}
+.ain-news-icons-modern {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.ain-news-icons-modern svg {
+  vertical-align: middle;
+  opacity: 0.85;
+}
+.ain-news-link-modern {
+  margin-left: auto;
+  color: #fff;
+  background: #646cff;
+  border-radius: 7px;
+  padding: 0.45rem 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px #646cff22;
+  display: inline-block;
+}
+.ain-news-link-modern:hover {
+  background: #232946;
+  color: #60a5fa;
+}
+@media (max-width: 700px) {
+  .ain-news-card-modern {
+    flex-direction: column;
+    min-height: unset;
+  }
+  .ain-news-img-modern {
+    width: 100%;
+    height: 180px;
+    border-radius: 18px 18px 0 0;
+  }
+  .ain-news-content-modern {
+    padding: 1.1rem 1rem 1.2rem 1rem;
+  }
+}
+
+.about-glow-btn {
+  margin: 1.2rem auto 0 auto;
+  display: block;
+  background: linear-gradient(90deg, #60a5fa 0%, #646cff 100%);
+  color: #fff;
+  font-size: 1.18rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 12px;
+  padding: 0.85rem 2.4rem;
+  box-shadow: 0 0 18px 4px #646cff66, 0 2px 8px #23294644;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+  animation: glowPulse 2.2s infinite alternate;
+}
+.about-glow-btn:hover, .about-glow-btn:focus {
+  background: linear-gradient(90deg, #a5b4fc 0%, #60a5fa 100%);
+  color: #fff;
+  transform: scale(1.04) translateY(-2px);
+  box-shadow: 0 0 32px 8px #60a5fa99, 0 4px 16px #23294655;
+}
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 18px 4px #646cff66, 0 2px 8px #23294644;
+  }
+  100% {
+    box-shadow: 0 0 32px 12px #60a5fa99, 0 4px 16px #23294655;
+  }
+}
+@media (max-width: 700px) {
+  .about-glow-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+body.light .about-glow-btn {
+  background: linear-gradient(90deg, #646cff 0%, #60a5fa 100%);
+  color: #232946;
+  box-shadow: 0 0 18px 4px #60a5fa55, 0 2px 8px #646cff22;
+}
+body.light .about-glow-btn:hover, body.light .about-glow-btn:focus {
+  background: linear-gradient(90deg, #60a5fa 0%, #a5b4fc 100%);
+  color: #232946;
+  box-shadow: 0 0 32px 8px #60a5fa99, 0 4px 16px #646cff55;
+}
+body.light .feature-card {
+  background: #f4f4f4;
+  color: #232946;
+  box-shadow: 0 2px 16px #60a5fa22;
+}
+body.light .feature-card:hover {
+  box-shadow: 0 6px 32px #60a5fa44;
+  border: 1.5px solid #60a5fa;
+}
+body.light .ain-news-card-modern {
+  background: #fff;
+  box-shadow: 0 4px 24px #60a5fa22;
+}
+body.light .ain-news-card-modern:hover {
+  box-shadow: 0 8px 32px #60a5fa55;
+}
+body.light .ain-news-title-modern {
+  color: #232946;
+}
+body.light .ain-news-author-modern {
+  color: #646cff;
+}
+body.light .ain-news-link-modern {
+  background: #60a5fa;
+  color: #fff;
+}
+body.light .ain-news-link-modern:hover {
+  background: #232946;
+  color: #60a5fa;
+}
+
+.features-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+  margin-top: 2.2rem;
+}
+.features-row .feature-card {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 320px;
+}
+@media (max-width: 900px) {
+  .features-row {
+    gap: 1rem;
+  }
+}
+@media (max-width: 700px) {
+  .features-row {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  .features-row .feature-card {
+    max-width: 100%;
+  }
+}
