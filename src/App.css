@@ -1175,3 +1175,31 @@ body.light .ain-news-link-modern:hover {
     max-width: 100%;
   }
 }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  justify-items: stretch;
+  align-items: stretch;
+  margin-top: 2.2rem;
+}
+.features-grid .feature-card {
+  min-width: 0;
+  max-width: 420px;
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .features-grid {
+    gap: 1rem;
+  }
+}
+@media (max-width: 700px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .features-grid .feature-card {
+    max-width: 100%;
+  }
+}
