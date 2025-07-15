@@ -377,8 +377,8 @@ function App() {
           </a>
           <a href="https://portafolio-jpps.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
             <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#232946"/><path d="M10 10h12v12H10z" fill="#fff"/><path d="M13 13h6v6h-6z" fill="#646cff"/></svg>
-          </a>
-        </div>
+        </a>
+      </div>
       </footer>
       {showScrollTop && (
         <button className="scroll-to-top visible" onClick={scrollToTop} aria-label="Scroll to top">
