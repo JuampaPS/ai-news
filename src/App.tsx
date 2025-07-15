@@ -3,6 +3,7 @@ import './App.css';
 import './components/ImageCarousel.css';
 import AINews from './AINews';
 import HeroSection from './components/HeroSection';
+import GalleryAI from './components/GalleryAI';
 
 function useScrollReveal(selector: string) {
   useEffect(() => {
@@ -26,7 +27,7 @@ function useScrollReveal(selector: string) {
 
 function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  const [page, setPage] = useState<'home' | 'news' | 'about' | 'ai-programs' | 'ai-art-blogs'>('home');
+  const [page, setPage] = useState<'home' | 'news' | 'about' | 'ai-programs' | 'ai-art-blogs' | 'gallery-ai'>('home');
   const [showFeaturesMenu, setShowFeaturesMenu] = useState(false);
   const featuresMenuRef = useRef<HTMLDivElement>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -147,6 +148,11 @@ function App() {
               </div>
             )}
           </div>
+          <a href="#gallery-ai" className={`has-tooltip${page === 'gallery-ai' ? ' active' : ''}`} onClick={e => { e.preventDefault(); setPage('gallery-ai'); }}>
+            <svg className="menu-icon" viewBox="0 0 20 20"><rect x="3" y="5" width="14" height="10" rx="2" strokeWidth="1.5" fill="none"/><circle cx="7" cy="9" r="1.2"/><path d="M3 15l4-4a2 2 0 0 1 2.8 0l4.2 4" strokeWidth="1.5" fill="none"/></svg>
+            Gallery AI
+            <span className="tooltip">AI Art Gallery</span>
+          </a>
           <a href="#about" className={`has-tooltip${page === 'about' ? ' active' : ''}`} onClick={e => { e.preventDefault(); goToAbout(); }}>
             <svg className="menu-icon" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3" strokeWidth="1.5"/><path d="M5 16c0-2.5 2-4 5-4s5 1.5 5 4" strokeWidth="1.5"/></svg>
             About
@@ -274,6 +280,59 @@ function App() {
             <button className="cta-btn" style={{ marginTop: 10 }} onClick={() => setPage('home')}>Back to Home</button>
           </section>
         )}
+        {page === 'ai-programs' && (
+          <section className="about-section" id="ai-programs">
+            <h2>🎨 🧠 Best AI Tools for Design & Content Creation</h2>
+            <p style={{ color: '#b8b8ff', fontSize: '1.08rem', marginBottom: 18 }}>
+              Discover a curated list of the most powerful and user-friendly AI tools for designers, creators, marketers, and students. These platforms help you generate images, videos, text, and more—faster and smarter. Whether you want to create stunning graphics, automate writing, or prototype apps, these tools will boost your creativity and productivity.
+            </p>
+            <div style={{ overflowX: 'auto', marginBottom: 24 }}>
+              <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: 0, background: 'var(--color-bg)', color: 'var(--color-text)', borderRadius: 16, boxShadow: '0 2px 16px #646cff22', fontSize: '1.05rem', minWidth: 320, maxWidth: 700, margin: '0 auto' }}>
+                <thead>
+                  <tr style={{ background: '#232946', color: '#60a5fa', borderRadius: 16 }}>
+                    <th style={{ padding: '16px 10px', border: 'none', fontWeight: 700, fontSize: '1.08rem', letterSpacing: '0.02em', borderTopLeftRadius: 16 }}>Tool</th>
+                    <th style={{ padding: '16px 10px', border: 'none', fontWeight: 700, fontSize: '1.08rem', letterSpacing: '0.02em' }}>What does it do?</th>
+                    <th style={{ padding: '16px 10px', border: 'none', fontWeight: 700, fontSize: '1.08rem', letterSpacing: '0.02em', borderTopRightRadius: 16 }}>Ideal for…</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["Canva Magic Studio", "Generate images, text, video, and presentations from prompts.", "Quick designs, social media", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#00C4CC"/><text x="16" y="21" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#fff">C</text></svg>],
+                    ["Adobe Firefly", "Generative AI for images, backgrounds, text, and illustrations. Integrated in Photoshop and Express.", "Professional graphic design", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#FF6163"/><text x="16" y="21" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#fff">A</text></svg>],
+                    ["Runway ML", "Generate and edit video with AI, remove backgrounds, upscale.", "Social videos, reels, motion", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#6EE7B7"/><polygon points="12,10 24,16 12,22" fill="#232946"/></svg>],
+                    ["Descript", "Video editor + auto transcription + overdub (AI voice).", "Podcasts, reels, audiovisual content", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#2563EB"/><text x="16" y="21" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#fff">D</text></svg>],
+                    ["Notion AI", "Assisted writing inside Notion: summaries, ideas, structure.", "Blog, organization, education", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#fff" stroke="#232946" strokeWidth="2"/><text x="16" y="21" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#232946">N</text></svg>],
+                    ["Jasper AI", "Long-form content writing with adjustable tone (blogs, ads, etc).", "Copywriting, marketing, SEO", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#A78BFA"/><text x="16" y="21" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#fff">J</text></svg>],
+                    ["Kittl", "Graphic design platform with text-to-graphic styles.", "Logos, posters, branding", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#FBBF24"/><text x="16" y="21" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#232946">K</text></svg>],
+                    ["Uizard", "Turn sketches or prompts into UI prototypes in seconds.", "Apps, websites, wireframes", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#60A5FA"/><text x="16" y="21" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#fff">U</text></svg>],
+                    ["Looka", "Automatic logo generator with AI and branding kit.", "Quick branding", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#F472B6"/><text x="16" y="21" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#fff">L</text></svg>],
+                    ["Lex Page / Anyword", "Predictive writing for ads, landing pages, headlines.", "Marketing, ecommerce, UX writing", <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#232946"/><text x="16" y="21" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#fff">A</text></svg>],
+                  ].map((row, idx) => (
+                    <tr key={String(row[0])} style={{ background: idx % 2 === 0 ? '#23294611' : 'transparent' }}>
+                      <td style={{ padding: '14px 10px', border: 'none', fontWeight: 700, color: '#646cff', fontSize: '1.08rem', display: 'flex', alignItems: 'center', gap: 10 }}>
+                        {row[3]} <span>{row[0]}</span>
+                      </td>
+                      <td style={{ padding: '14px 10px', border: 'none', color: '#b8b8ff', fontWeight: 400 }}>{row[1]}</td>
+                      <td style={{ padding: '14px 10px', border: 'none', color: '#60a5fa', fontWeight: 500 }}>{row[2]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <h3 style={{ color: '#60a5fa', marginTop: 18 }}>🔗 Useful Links</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.7rem', marginBottom: 18, maxWidth: 700, marginLeft: 'auto', marginRight: 'auto' }}>
+              <a href="https://www.canva.com/magic/" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', background: '#232946', borderRadius: 8, padding: '0.7rem', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '1rem', boxShadow: '0 2px 8px #646cff22' }}>Canva Magic Studio</a>
+              <a href="https://firefly.adobe.com" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', background: '#232946', borderRadius: 8, padding: '0.7rem', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '1rem', boxShadow: '0 2px 8px #646cff22' }}>Adobe Firefly</a>
+              <a href="https://runwayml.com" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', background: '#232946', borderRadius: 8, padding: '0.7rem', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '1rem', boxShadow: '0 2px 8px #646cff22' }}>Runway</a>
+              <a href="https://www.descript.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', background: '#232946', borderRadius: 8, padding: '0.7rem', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '1rem', boxShadow: '0 2px 8px #646cff22' }}>Descript</a>
+              <a href="https://www.jasper.ai/" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', background: '#232946', borderRadius: 8, padding: '0.7rem', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '1rem', boxShadow: '0 2px 8px #646cff22' }}>Jasper</a>
+              <a href="https://www.uizard.io/" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', background: '#232946', borderRadius: 8, padding: '0.7rem', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '1rem', boxShadow: '0 2px 8px #646cff22' }}>Uizard</a>
+              <a href="https://www.kittl.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', background: '#232946', borderRadius: 8, padding: '0.7rem', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '1rem', boxShadow: '0 2px 8px #646cff22' }}>Kittl</a>
+              <a href="https://looka.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', background: '#232946', borderRadius: 8, padding: '0.7rem', textAlign: 'center', fontWeight: 600, textDecoration: 'none', fontSize: '1rem', boxShadow: '0 2px 8px #646cff22' }}>Looka</a>
+            </div>
+            <button className="cta-btn" style={{ marginTop: 10 }} onClick={() => setPage('home')}>Back to Home</button>
+          </section>
+        )}
         {page === 'ai-art-blogs' && (
           <section className="about-section" id="ai-art-blogs">
             <h2>Best Blogs AI Art</h2>
@@ -298,6 +357,7 @@ function App() {
             <button className="cta-btn" style={{ marginTop: 10 }} onClick={() => setPage('home')}>Back to Home</button>
           </section>
         )}
+        {page === 'gallery-ai' && <GalleryAI />}
         {page === 'about' && (
           <section className="about-section" id="about">
             <h2>About this project</h2>
